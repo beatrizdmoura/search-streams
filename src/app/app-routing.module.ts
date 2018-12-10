@@ -6,7 +6,8 @@ import {StreamDetailComponent} from './stream-detail/stream-detail.component';
 const routes: Routes = [
   { path: '', redirectTo: '/streams', pathMatch: 'full' },
   { path: 'streams', component: StreamsComponent },
-  { path: 'streams/:user_id', component: StreamDetailComponent }
+  { path: 'streams/:user_id', component: StreamDetailComponent },
+  { path: '**', redirectTo: '/streams', pathMatch: 'full' }
 ];
 
 @NgModule({
