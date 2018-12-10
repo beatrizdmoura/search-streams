@@ -22,7 +22,6 @@ export class TwitchService {
 
   getStreamsUrl(params: object): string {
     const endpoint = `${this.apiUrl}${this.streamsEndpoint}`;
-    console.log(`${endpoint}?${stringify(params)}`);
     return `${endpoint}?${stringify(params)}`;
   }
 
