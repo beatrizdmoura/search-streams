@@ -1,0 +1,68 @@
+<div fxLayoutAlign="start"
+fxLayout="row" fxLayoutGap="10px">
+  <div fxLayout="column" fxFlex fxLayoutAlign="end">
+    <mat-form-field>
+      <!--<input matInput #searchStreams placeholder="Search Streams" [formControl]="searchControl" [matAutocomplete]="searchComplete">-->
+      <mat-chip-list #selectedGames>
+        <mat-chip
+          *ngFor="let game of games"
+          (removed)="remove(game)">
+          {{game.name}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input matInput
+               placeholder="Search Streams"
+               #searchStreams
+               [formControl]="searchControl"
+               [matChipInputFor]="selectedGames"
+               [matAutocomplete]="searchAutoComplete">
+      </mat-chip-list>
+      <mat-autocomplete #searchAutoComplete="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let game of filteredGames | async" [value]="game">
+          {{game.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="end">
+    <small fxLayout="row" fxLayoutAlign="end" class="hidden-label">Items per page:</small>
+    <mat-form-field class="special-select">
+      <mat-select placeholder="Items per page" [(ngModel)]="limit" (selectionChange)="updateLimit()">
+        <mat-option *ngFor="let option of limitOptions" [value]="option">{{option}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="end">
+    <div class="mat-form-field-wrapper">
+      <button mat-raised-button color="primary"
+              (click)="search()">
+        Search
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<div fxLayoutAlign="center"
+     fxLayout="row wrap" fxLayout.xs="column">
+  <app-stream-info
+    *ngFor="let stream of streams"
+    class="stream spaced-item"
+    fxFlex.xs="1 1 100%" fxFlex.sm="1 1 50%"
+    fxFlex.md="1 1 33%" fxFlex.lg="1 1 25%"
+    fxFlex.xl="1 1 20%"
+    [stream]="stream" [routerLink]="[stream.user_id]">
+  </app-stream-info>
+</div>
+
+<br>
+
+<div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px">
+  <button mat-raised-button color="primary"
+          *ngIf="page > 1"
+          (click)="previousPage()">Previous</button>
+  <button mat-raised-button color="primary"
+          *ngIf="pageCursor"
+          (click)="nextPage()">Next</button>
+</div>

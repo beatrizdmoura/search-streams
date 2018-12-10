@@ -1,0 +1,20 @@
+.stream {
+  display: flex;
+}
+
+.spaced-item {
+  padding: 10px;
+}
+
+/deep/ .special-select .mat-form-field-infix {
+  width: auto !important;
+}
+
+.hidden-label {
+  visibility: hidden;
+  height: 0;
+}
+
+#selectedGames {
+  width: 100%;
+}

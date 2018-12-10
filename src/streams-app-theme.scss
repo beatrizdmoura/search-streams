@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$streams-app-primary: mat-palette($mat-pink, 900);
+$streams-app-accent: mat-palette($mat-pink, 100);
+$streams-app-theme: mat-light-theme($streams-app-primary, $streams-app-accent);
+
+$background-color: map_get($mat-grey, 300);
+
+$background: map-get($streams-app-theme, background);
+$background: map_merge($background, (background: $background-color));
+$streams-app-theme: map_merge($streams-app-theme, (background: $background));
+
+@include angular-material-theme($streams-app-theme);

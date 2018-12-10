@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { StreamsComponent } from './streams/streams.component';
+import {StreamDetailComponent} from './stream-detail/stream-detail.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', redirectTo: '/streams', pathMatch: 'full' },
+  { path: 'streams', component: StreamsComponent },
+  { path: 'streams/:user_id', component: StreamDetailComponent }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes)],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule { }

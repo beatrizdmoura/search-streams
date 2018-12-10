@@ -1,0 +1,28 @@
+<div class="resp-container" *ngIf="user ">
+  <iframe
+    class="resp-iframe"
+    [src]="playerLink"
+    frameborder="0"
+    scrolling="no"
+    allowfullscreen="true">
+  </iframe>
+</div>
+
+<br>
+
+<div *ngIf="stream">
+
+  <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="10px">
+    <div fxLayout="column" fxLayoutAlign="space-between">
+      <div fxLayout="row" fxLayoutGap="10px">
+        <img [src]="user.profile_image_url" width="30px" height="30px" fxLayout="column">
+        <div fxLayout="column">
+          <h2 fxLayout="row" class="no-margin">{{stream.user_name}} - {{stream.title}}</h2>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="column">
+      <h2 class="no-margin">Viewers: {{stream.viewer_count}}</h2>
+    </div>
+  </div>
+</div>

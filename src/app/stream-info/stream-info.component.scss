@@ -1,0 +1,22 @@
+.stream-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+}
+
+.stream-image {
+  margin: 0;
+  width: calc(100%);
+}
+
+.stream-image:first-child {
+  margin-top: 0;
+}
+
+.stream-content {
+  padding: 5px;
+  text-align: center;
+  margin: auto 0 !important;
+}
